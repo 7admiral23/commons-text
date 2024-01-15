@@ -179,6 +179,7 @@
               <exclude>tools/</exclude>
               <exclude>jacoco/</exclude>
               <exclude>pit-reports/</exclude>
+              <exclude>dependency-check-report.html</exclude>
             </excludes>
           </configuration>
         </plugin><!-- override skip property of parent pom -->
