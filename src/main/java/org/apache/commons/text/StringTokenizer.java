@@ -472,15 +472,7 @@ public class StringTokenizer implements ListIterator<String>, Cloneable {
         try {
             return cloneReset();
         } catch (final CloneNotSupportedException ex) {
-            return createNonNullClone();
-        }
-    }
-    
-    private Object createNonNullClone() {
-        try {
-            return super.clone();
-        } catch (CloneNotSupportedException e) {
-            return new Object();
+            return null;
         }
     }
 
