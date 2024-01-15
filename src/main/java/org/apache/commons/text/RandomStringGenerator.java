@@ -472,5 +472,5 @@ public final class RandomStringGenerator {
             return String.valueOf(characterList.get(random.nextInt(listSize))).codePointAt(0);
         }
         return String.valueOf(characterList.get(secureRandom.nextInt(listSize))).codePointAt(0);
-    }  
+    }
 }
