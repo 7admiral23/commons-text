@@ -300,24 +300,25 @@ public class ExtendedMessageFormat extends MessageFormat {
      */
     @Override
     public boolean equals(final Object obj) {
-        if (obj == this) {
+        if (this == obj) {
             return true;
         }
-        if (obj == null) {
+        if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-        if (!Objects.equals(getClass(), obj.getClass())) {
-          return false;
-        }
+    
         final ExtendedMessageFormat rhs = (ExtendedMessageFormat) obj;
+    
         if (!Objects.equals(toPattern, rhs.toPattern)) {
             return false;
         }
         if (!super.equals(obj)) {
             return false;
         }
+    
         return Objects.equals(registry, rhs.registry);
     }
+    
 
     /**
      * Gets a custom format from a format description.
