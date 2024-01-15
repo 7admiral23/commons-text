@@ -306,19 +306,15 @@ public class ExtendedMessageFormat extends MessageFormat {
         if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-    
         final ExtendedMessageFormat rhs = (ExtendedMessageFormat) obj;
-    
         if (!Objects.equals(toPattern, rhs.toPattern)) {
             return false;
         }
         if (!super.equals(obj)) {
             return false;
         }
-    
         return Objects.equals(registry, rhs.registry);
     }
-    
 
     /**
      * Gets a custom format from a format description.
