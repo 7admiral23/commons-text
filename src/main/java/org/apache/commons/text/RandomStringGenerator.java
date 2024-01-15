@@ -16,6 +16,7 @@
  */
 package org.apache.commons.text;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -449,11 +450,13 @@ public final class RandomStringGenerator {
      * @return The random number.
      */
     private int generateRandomNumber(final int minInclusive, final int maxInclusive) {
-        if (random != null) {
-            return random.nextInt(maxInclusive - minInclusive + 1) + minInclusive;
-        }
-        return ThreadLocalRandom.current().nextInt(minInclusive, maxInclusive + 1);
+    SecureRandom secureRandom = new SecureRandom();
+    if (random != null) {
+        return random.nextInt(maxInclusive - minInclusive + 1) + minInclusive;
     }
+    return secureRandom.nextInt(maxInclusive - minInclusive + 1) + minInclusive;
+}
+
 
     /**
      * Generates a random number within a range, using a {@link ThreadLocalRandom} instance
@@ -464,9 +467,10 @@ public final class RandomStringGenerator {
      */
     private int generateRandomNumber(final List<Character> characterList) {
         final int listSize = characterList.size();
+        SecureRandom secureRandom = new SecureRandom();
         if (random != null) {
             return String.valueOf(characterList.get(random.nextInt(listSize))).codePointAt(0);
         }
-        return String.valueOf(characterList.get(ThreadLocalRandom.current().nextInt(0, listSize))).codePointAt(0);
-    }
+        return String.valueOf(characterList.get(secureRandom.nextInt(listSize))).codePointAt(0);
+    }  
 }
